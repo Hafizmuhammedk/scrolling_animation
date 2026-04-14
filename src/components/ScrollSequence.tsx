@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, memo } from "react";
 import { useLenis } from "lenis/react";
 
 /**
@@ -55,7 +55,7 @@ interface ScrollSequenceProps {
   onLoaded?: () => void;
 }
 
-export default function ScrollSequence({
+const ScrollSequence = memo(function ScrollSequence({
   onProgress,
   onLoadingProgress,
   onLoaded,
@@ -202,7 +202,7 @@ export default function ScrollSequence({
     if (isReady) {
       updateTargetFrame();
     }
-  });
+  }, [isReady, updateTargetFrame]);
 
   // ── Continuous RAF loop that lerps toward the target frame ──
   useEffect(() => {
@@ -292,4 +292,7 @@ export default function ScrollSequence({
       </div>
     </div>
   );
-}
+});
+
+ScrollSequence.displayName = "ScrollSequence";
+export default ScrollSequence;

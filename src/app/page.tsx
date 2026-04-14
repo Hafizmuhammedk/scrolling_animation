@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ScrollSequence from "@/components/ScrollSequence";
@@ -10,14 +10,17 @@ import SpecsSection from "@/components/SpecsSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const scrollProgressRef = useRef(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInAnimationZone, setIsInAnimationZone] = useState(false);
 
   const handleProgress = useCallback((progress: number) => {
+    scrollProgressRef.current = progress;
+    const inZone = progress > 0 && progress < 1;
+    setIsInAnimationZone((prev) => (prev !== inZone ? inZone : prev));
     setScrollProgress(progress);
-    setIsInAnimationZone(progress > 0 && progress < 1);
   }, []);
 
   const handleLoadingProgress = useCallback(
