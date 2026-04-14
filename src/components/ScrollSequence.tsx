@@ -36,7 +36,7 @@ const TARGET_FPS = 60;
 /** Build the path to a specific frame (1-indexed) */
 function getFramePath(index: number): string {
   const paddedIndex = String(index).padStart(3, "0");
-  return `/api/frames/ezgif-frame-${paddedIndex}.png`;
+  return `/frames/ezgif-frame-${paddedIndex}.png`;
 }
 
 /**

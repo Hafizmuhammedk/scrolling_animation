@@ -32,3 +32,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# original frames source (served from public/frames/ instead)
+ezgif-621fdca560a5c94f-png-split/
