@@ -21,7 +21,7 @@ import { useLenis } from "lenis/react";
  * ─────────────────────────────────────────────────────────
  */
 
-const FRAME_COUNT = 240;
+const FRAME_COUNT = 120;
 
 /**
  * Base lerp speed per second for the frame index animation.
@@ -36,7 +36,7 @@ const TARGET_FPS = 60;
 /** Build the path to a specific frame (1-indexed) */
 function getFramePath(index: number): string {
   const paddedIndex = String(index).padStart(3, "0");
-  return `/frames/ezgif-frame-${paddedIndex}.png`;
+  return `/frames-webp/frame-${paddedIndex}.webp`;
 }
 
 /**
